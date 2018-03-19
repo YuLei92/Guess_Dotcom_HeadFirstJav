@@ -3,19 +3,21 @@ public class GuessGame {
     Dotcom c2;
     Dotcom c3;
 
-    public void startGame(){
-        c1 = new Dotcom();
-        c2 = new Dotcom();
-        c3 = new Dotcom();
-        int guess_c1 = 0;
-        int guess_c2 = 0;
-        int guess_c3 = 0;
-        boolean c1_is_hit = false;
-        boolean c2_is_hit = false;
-        boolean c3_is_hit = false;
-        System.out.println("");
-
+    public void startGame() {
+        Dotcom[] Com;
+        Com = new Dotcom[3];
+        Com[0] = new Dotcom();
+        Com[1] = new Dotcom();
+        Com[2] = new Dotcom();
+        GameHelper Helper = new GameHelper();
+        String user_input;
+        System.out.println("The game is started.");
+        while (!(Com[0].get_hit() && Com[1].get_hit() && Com[2].get_hit())) {
+            user_input = Helper.getUserInput("Enter a number");
+            Com[0].check_hit(user_input);
+            Com[1].check_hit(user_input);
+            Com[2].check_hit(user_input);
+        }
+        System.out.println("The game is ended.");
     }
-
-
 }
